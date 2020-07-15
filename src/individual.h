@@ -99,6 +99,7 @@ struct infection_event{
 #define time_infected_infection_event( infection_event ) ( max( max( infection_event->times[PRESYMPTOMATIC], infection_event->times[ASYMPTOMATIC ] ), infection_event->times[PRESYMPTOMATIC_MILD] ) )
 
 #define is_in_hospital( indiv ) ( ( indiv->status == HOSPITALISED || indiv->status == CRITICAL || indiv->status == HOSPITALISED_RECOVERING ) )
+#define not_in_hospital( indiv ) ( indiv->hospital_state == NOT_IN_HOSPITAL || indiv->hospital_state == DISCHARGED)
 
 /************************************************************************/
 /******************************  Functions  *****************************/
@@ -121,7 +122,6 @@ void set_general_admission( individual*, parameters*, int );
 void set_icu_admission( individual*, parameters*, int );
 void set_mortuary_admission( individual*, parameters*, int );
 void set_discharged( individual*, parameters*, int );
-void set_not_in_hospital( individual*, parameters* , int );
 void update_random_interactions( individual*, parameters* );
 int count_infection_events( individual * );
 void destroy_individual( individual* );
