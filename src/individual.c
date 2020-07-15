@@ -377,6 +377,11 @@ void set_discharged( individual *indiv, parameters* params, int time )
 	indiv->current_hospital_event = NULL;
 }
 
+void set_not_in_hospital( individual *indiv, parameters* params, int time )
+{
+    indiv->hospital_state = NOT_IN_HOSPITAL;
+    indiv->current_hospital_event = NULL;
+}
 /*****************************************************************************************
 *  Name:		destroy_individual
 *  Description: Destroys the individual structure and releases its memory

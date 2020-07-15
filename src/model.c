@@ -1004,6 +1004,7 @@ int one_time_step( model *model )
 	{
 		transition_events( model, DISCHARGED,      		   &transition_to_discharged, 				FALSE );
 		transition_events( model, MORTUARY,        		   &transition_to_mortuary,   				FALSE );
+        transition_events( model, NOT_IN_HOSPITAL,         &transition_to_not_in_hospital, 			FALSE );
 
 		swap_waiting_general_and_icu_patients( model );
 		hospital_waiting_list_transition_scheduler( model, GENERAL );

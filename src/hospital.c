@@ -307,6 +307,12 @@ void transition_to_discharged( model *model, individual *indiv )
 	transition_one_hospital_event( model, indiv, DISCHARGED, NO_EVENT, NO_EDGE );
 }
 
+void transition_to_not_in_hospital( model* model, individual *indiv )
+{
+    set_not_in_hospital( indiv, model->params, 1);
+    transition_one_hospital_event( model, indiv, NOT_IN_HOSPITAL, NO_EVENT, NO_EDGE );
+}
+
 /*****************************************************************************************
 *  Name:		add_patient_to_hospital
 *  Description: Checks to see if there is an available ward in a patient's hospital. Returns

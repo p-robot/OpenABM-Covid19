@@ -436,6 +436,7 @@ void transition_to_recovered( model *model, individual *indiv )
 		{
 			remove_if_in_waiting_list( indiv, &model->hospitals[indiv->hospital_idx] );
 			transition_one_hospital_event( model, indiv, indiv->hospital_state, DISCHARGED, NO_EDGE );
+            transition_one_hospital_event( model, indiv, indiv->hospital_state, NOT_IN_HOSPITAL, NO_EDGE );
 		}
 	}
 

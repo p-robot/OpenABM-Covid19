@@ -56,6 +56,7 @@ void transition_to_general( model *model, individual *indiv );
 void transition_to_icu( model *model, individual *indiv );
 void transition_to_mortuary( model *model, individual *indiv );
 void transition_to_discharged( model *model, individual *indiv );
+void transition_to_not_in_hospital( model* model, individual *indiv );
 
 void add_healthcare_worker_to_hospital(hospital *hospital, individual *indiv, int type);
 int  add_patient_to_hospital( model* model, individual *indiv, int required_ward );
