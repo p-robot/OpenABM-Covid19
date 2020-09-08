@@ -519,6 +519,8 @@ void intervention_test_order( model *model, individual *indiv, int time )
 				int test_order_wait_priority = model->params->test_order_wait_priority;
 				add_individual_to_event_list( model, TEST_TAKE, indiv, model->time + test_order_wait_priority );
 				indiv->quarantine_test_result = TEST_ORDERED_PRIORITY;
+				model->n_priority_tests[indiv->age_group]++;
+
 			} else
 			{
 				add_individual_to_event_list( model, TEST_TAKE, indiv, time );

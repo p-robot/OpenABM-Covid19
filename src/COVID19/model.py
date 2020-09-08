@@ -664,6 +664,12 @@ class Model:
         results["n_tests"] = covid19.utils_n_daily(
             self.c_model, covid19.TEST_RESULT, int(self.c_model.time) + 1
         )
+        
+        for i, age in enumerate(AgeGroupEnum):
+            key = f"n_priority_tests{age.name}"
+            value = covid19.get_n_priority_tests(self.c_model, i)
+            results[key] = value
+        
         results["n_symptoms"] = covid19.utils_n_current(
             self.c_model, covid19.SYMPTOMATIC
         ) + covid19.utils_n_current(self.c_model, covid19.SYMPTOMATIC_MILD)

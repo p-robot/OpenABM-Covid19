@@ -80,6 +80,8 @@ struct model{
 
 	long n_quarantine_days;
 
+	long n_priority_tests[N_AGE_GROUPS];
+
 	long n_quarantine_app_user;
 	long n_quarantine_infected;
 	long n_quarantine_recovered;

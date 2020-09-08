@@ -16,6 +16,10 @@ int utils_n_total_age( model *model, int type, int age ) {
 int utils_n_daily( model *model, int type, int day ) {
     return model->event_lists[type].n_daily_current[day];
 }
+
+int get_n_priority_tests(model *model, int age){
+    return model->n_priority_tests[age];
+}
 %}
 
 
