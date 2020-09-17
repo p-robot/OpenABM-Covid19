@@ -44,6 +44,7 @@ struct individual{
 	event *quarantine_event;
 	event *quarantine_release_event;
 	int quarantine_test_result;
+	int test_type;
 	
 	trace_token *trace_tokens;
 	trace_token *index_trace_token;

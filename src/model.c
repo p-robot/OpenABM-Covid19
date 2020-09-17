@@ -258,6 +258,10 @@ void set_up_counters( model *model ){
 	model->n_quarantine_app_user = 0;
 	model->n_quarantine_app_user_infected = 0;
 	model->n_quarantine_app_user_recovered = 0;
+
+	for( int age = 0; age < N_AGE_GROUPS; age++ )
+		model->n_priority_tests[age] = 0;
+
 	// Daily totals
 	model->n_quarantine_events = 0;
 	model->n_quarantine_events_app_user = 0;
@@ -276,6 +280,9 @@ void reset_counters( model *model ){
 	model->n_quarantine_events_app_user = 0;
 	model->n_quarantine_release_events = 0;
 	model->n_quarantine_release_events_app_user = 0;
+
+	for( int age = 0; age < N_AGE_GROUPS; age++ )
+		model->n_priority_tests[age] = 0;
 }
 
 /*****************************************************************************************

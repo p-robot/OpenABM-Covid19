@@ -91,6 +91,8 @@ struct model{
 	long n_quarantine_release_events;
 	long n_quarantine_release_events_app_user;
 
+	long n_priority_tests[N_AGE_GROUPS];
+
 	hospital *hospitals;
 };
 
