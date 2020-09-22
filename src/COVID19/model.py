@@ -674,8 +674,12 @@ class Model:
         
         for i, age in enumerate(AgeGroupEnum):
             key = f"n_priority_tests{age.name}"
-            value = covid19.get_n_priority_tests(self.c_model, i)
+            value = covid19.get_n_priority_tests(self.c_model, self.c_model.time, i)
             results[key] = value
+        
+        results["n_test_results"] = covid19.get_n_test_results(
+            self.c_model, self.c_model.time
+        )
         
         results["n_symptoms"] = covid19.utils_n_current(
             self.c_model, covid19.SYMPTOMATIC

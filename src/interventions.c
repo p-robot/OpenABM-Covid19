@@ -508,7 +508,6 @@ void intervention_test_order( model *model, individual *indiv, int time )
         {
         	add_individual_to_event_list( model, TEST_TAKE, indiv, time );
         	indiv->quarantine_test_result = TEST_ORDERED;
-            indiv->test_type = NORMAL_TEST;
         }
         else
         {
@@ -520,14 +519,12 @@ void intervention_test_order( model *model, individual *indiv, int time )
 				int test_order_wait_priority = model->params->test_order_wait_priority;
 				add_individual_to_event_list( model, TEST_TAKE, indiv, model->time + test_order_wait_priority );
 				indiv->quarantine_test_result = TEST_ORDERED_PRIORITY;
-                indiv->test_type = PRIORITY_TEST;
 			} else
 			{
 				add_individual_to_event_list( model, TEST_TAKE, indiv, time );
 				indiv->quarantine_test_result = TEST_ORDERED;
-				indiv->test_type = NORMAL_TEST;
 			}
-        }
+		}
 	}
 }
 
@@ -543,9 +540,14 @@ void intervention_test_take( model *model, individual *indiv )
 {
 	int result_time = model->time;
 	if( indiv->quarantine_test_result == TEST_ORDERED_PRIORITY )
+    {
 		result_time += model->params->test_result_wait_priority;
+		model->n_priority_tests[result_time][indiv->age_group]++;
+	}
 	else
+	{
 		result_time += model->params->test_result_wait;
+	}
 
 	int time_infected = time_infected( indiv );
 
@@ -564,6 +566,7 @@ void intervention_test_take( model *model, individual *indiv )
 
 
 	add_individual_to_event_list( model, TEST_RESULT, indiv, result_time );
+	model->n_test_results[result_time]++;
 }
 
 /*****************************************************************************************
@@ -599,11 +602,6 @@ void intervention_test_result( model *model, individual *indiv )
 
 		if( !is_in_hospital( indiv ) || !(model->params->allow_clinical_diagnosis) )
 			intervention_on_positive_result( model, indiv );
-	}
-	if( indiv->test_type == PRIORITY_TEST )
-	{
-		model->n_priority_tests[indiv->age_group]++;
-		indiv->test_type = NO_TEST;
 	}
 
 	indiv->quarantine_test_result = NO_TEST;

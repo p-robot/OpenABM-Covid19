@@ -194,9 +194,6 @@ enum TRACE_TYPE{
 #define N_DRAW_LIST 1000
 #define INPUT_CHAR_LEN 300
 
-#define NORMAL_TEST 0
-#define PRIORITY_TEST 1
-
 #define NO_WARD -1
 #define NOT_HEALTHCARE_WORKER -1
 #define NO_HOSPITAL -1

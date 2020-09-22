@@ -25,8 +25,12 @@ int utils_n_daily_age( model *model, int type, int day, int age) {
     return model->event_lists[type].n_daily_by_age[day][age];
 }
 
-int get_n_priority_tests(model *model, int age){
-    return model->n_priority_tests[age];
+int get_n_priority_tests(model *model, int day, int age){
+    return model->n_priority_tests[day][age];
+}
+
+int get_n_test_results(model *model, int day){
+    return model->n_test_results[day];
 }
 
 %}
